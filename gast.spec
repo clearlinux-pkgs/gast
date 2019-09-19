@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x7B24DA8C9551659F (sguelton@quarkslab.com)
 #
 Name     : gast
-Version  : 0.3.1
-Release  : 15
-URL      : https://files.pythonhosted.org/packages/4d/17/a92e707853e2fb48aea76dcdc200ea9a2f7d1ce6d1eff07ddfcf326184cb/gast-0.3.1.tar.gz
-Source0  : https://files.pythonhosted.org/packages/4d/17/a92e707853e2fb48aea76dcdc200ea9a2f7d1ce6d1eff07ddfcf326184cb/gast-0.3.1.tar.gz
-Source1 : https://files.pythonhosted.org/packages/4d/17/a92e707853e2fb48aea76dcdc200ea9a2f7d1ce6d1eff07ddfcf326184cb/gast-0.3.1.tar.gz.asc
+Version  : 0.3.2
+Release  : 16
+URL      : https://files.pythonhosted.org/packages/1f/04/4e36c33f8eb5c5b6c622a1f4859352a6acca7ab387257d4b3c191d23ec1d/gast-0.3.2.tar.gz
+Source0  : https://files.pythonhosted.org/packages/1f/04/4e36c33f8eb5c5b6c622a1f4859352a6acca7ab387257d4b3c191d23ec1d/gast-0.3.2.tar.gz
+Source1 : https://files.pythonhosted.org/packages/1f/04/4e36c33f8eb5c5b6c622a1f4859352a6acca7ab387257d4b3c191d23ec1d/gast-0.3.2.tar.gz.asc
 Summary  : Python AST that abstracts the underlying Python version
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -52,14 +52,14 @@ python3 components for the gast package.
 
 
 %prep
-%setup -q -n gast-0.3.1
+%setup -q -n gast-0.3.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1568213982
+export SOURCE_DATE_EPOCH=1568861852
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
