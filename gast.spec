@@ -6,10 +6,10 @@
 #
 Name     : gast
 Version  : 0.3.2
-Release  : 18
+Release  : 19
 URL      : https://files.pythonhosted.org/packages/1f/04/4e36c33f8eb5c5b6c622a1f4859352a6acca7ab387257d4b3c191d23ec1d/gast-0.3.2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/1f/04/4e36c33f8eb5c5b6c622a1f4859352a6acca7ab387257d4b3c191d23ec1d/gast-0.3.2.tar.gz
-Source1 : https://files.pythonhosted.org/packages/1f/04/4e36c33f8eb5c5b6c622a1f4859352a6acca7ab387257d4b3c191d23ec1d/gast-0.3.2.tar.gz.asc
+Source1  : https://files.pythonhosted.org/packages/1f/04/4e36c33f8eb5c5b6c622a1f4859352a6acca7ab387257d4b3c191d23ec1d/gast-0.3.2.tar.gz.asc
 Summary  : Python AST that abstracts the underlying Python version
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -21,9 +21,10 @@ BuildRequires : astunparse
 BuildRequires : buildreq-distutils3
 
 %description
-GAST, daou naer!
-================
 A generic AST to represent Python2 and Python3's Abstract Syntax Tree(AST).
+        
+        GAST provides a compatibility layer between the AST of various Python versions,
+        as produced by ``ast.parse`` from the standard ``ast`` module.
 
 %package license
 Summary: license components for the gast package.
@@ -53,14 +54,14 @@ python3 components for the gast package.
 
 %prep
 %setup -q -n gast-0.3.2
+cd %{_builddir}/gast-0.3.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1568861852
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1576010013
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -76,12 +77,12 @@ python3 setup.py build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test
+PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python setup.py test
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gast
-cp LICENSE %{buildroot}/usr/share/package-licenses/gast/LICENSE
+cp %{_builddir}/gast-0.3.2/LICENSE %{buildroot}/usr/share/package-licenses/gast/a7b1672edaab167e0083c4c26c737daa5755efd8
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -92,7 +93,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/gast/LICENSE
+/usr/share/package-licenses/gast/a7b1672edaab167e0083c4c26c737daa5755efd8
 
 %files python
 %defattr(-,root,root,-)
