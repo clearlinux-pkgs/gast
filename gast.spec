@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x7B24DA8C9551659F (sguelton@quarkslab.com)
 #
 Name     : gast
-Version  : 0.3.2
-Release  : 20
-URL      : https://files.pythonhosted.org/packages/1f/04/4e36c33f8eb5c5b6c622a1f4859352a6acca7ab387257d4b3c191d23ec1d/gast-0.3.2.tar.gz
-Source0  : https://files.pythonhosted.org/packages/1f/04/4e36c33f8eb5c5b6c622a1f4859352a6acca7ab387257d4b3c191d23ec1d/gast-0.3.2.tar.gz
-Source1  : https://files.pythonhosted.org/packages/1f/04/4e36c33f8eb5c5b6c622a1f4859352a6acca7ab387257d4b3c191d23ec1d/gast-0.3.2.tar.gz.asc
+Version  : 0.3.3
+Release  : 21
+URL      : https://files.pythonhosted.org/packages/12/59/eaa15ab9710a20e22225efd042cd2d6a0b559a0656d5baba9641a2a4a921/gast-0.3.3.tar.gz
+Source0  : https://files.pythonhosted.org/packages/12/59/eaa15ab9710a20e22225efd042cd2d6a0b559a0656d5baba9641a2a4a921/gast-0.3.3.tar.gz
+Source1  : https://files.pythonhosted.org/packages/12/59/eaa15ab9710a20e22225efd042cd2d6a0b559a0656d5baba9641a2a4a921/gast-0.3.3.tar.gz.asc
 Summary  : Python AST that abstracts the underlying Python version
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -21,10 +21,9 @@ BuildRequires : astunparse
 BuildRequires : buildreq-distutils3
 
 %description
+GAST, daou naer!
+================
 A generic AST to represent Python2 and Python3's Abstract Syntax Tree(AST).
-        
-        GAST provides a compatibility layer between the AST of various Python versions,
-        as produced by ``ast.parse`` from the standard ``ast`` module.
 
 %package license
 Summary: license components for the gast package.
@@ -53,15 +52,16 @@ python3 components for the gast package.
 
 
 %prep
-%setup -q -n gast-0.3.2
-cd %{_builddir}/gast-0.3.2
+%setup -q -n gast-0.3.3
+cd %{_builddir}/gast-0.3.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1576010013
+export SOURCE_DATE_EPOCH=1579624423
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -82,7 +82,7 @@ PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python set
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gast
-cp %{_builddir}/gast-0.3.2/LICENSE %{buildroot}/usr/share/package-licenses/gast/a7b1672edaab167e0083c4c26c737daa5755efd8
+cp %{_builddir}/gast-0.3.3/LICENSE %{buildroot}/usr/share/package-licenses/gast/a7b1672edaab167e0083c4c26c737daa5755efd8
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
