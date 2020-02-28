@@ -6,7 +6,7 @@
 #
 Name     : gast
 Version  : 0.3.3
-Release  : 21
+Release  : 22
 URL      : https://files.pythonhosted.org/packages/12/59/eaa15ab9710a20e22225efd042cd2d6a0b559a0656d5baba9641a2a4a921/gast-0.3.3.tar.gz
 Source0  : https://files.pythonhosted.org/packages/12/59/eaa15ab9710a20e22225efd042cd2d6a0b559a0656d5baba9641a2a4a921/gast-0.3.3.tar.gz
 Source1  : https://files.pythonhosted.org/packages/12/59/eaa15ab9710a20e22225efd042cd2d6a0b559a0656d5baba9641a2a4a921/gast-0.3.3.tar.gz.asc
@@ -21,9 +21,10 @@ BuildRequires : astunparse
 BuildRequires : buildreq-distutils3
 
 %description
-GAST, daou naer!
-================
 A generic AST to represent Python2 and Python3's Abstract Syntax Tree(AST).
+
+GAST provides a compatibility layer between the AST of various Python versions,
+as produced by ``ast.parse`` from the standard ``ast`` module.
 
 %package license
 Summary: license components for the gast package.
@@ -46,6 +47,7 @@ python components for the gast package.
 Summary: python3 components for the gast package.
 Group: Default
 Requires: python3-core
+Provides: pypi(gast)
 
 %description python3
 python3 components for the gast package.
@@ -60,7 +62,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1579624423
+export SOURCE_DATE_EPOCH=1582925423
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
