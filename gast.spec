@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x7B24DA8C9551659F (sguelton@quarkslab.com)
 #
 Name     : gast
-Version  : 0.5.0
-Release  : 36
-URL      : https://files.pythonhosted.org/packages/a6/fb/7ff6a4ee66673c5964d3cf515ae85ba2076bc64bc2dcbbbd0153718b005f/gast-0.5.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/a6/fb/7ff6a4ee66673c5964d3cf515ae85ba2076bc64bc2dcbbbd0153718b005f/gast-0.5.0.tar.gz
-Source1  : https://files.pythonhosted.org/packages/a6/fb/7ff6a4ee66673c5964d3cf515ae85ba2076bc64bc2dcbbbd0153718b005f/gast-0.5.0.tar.gz.asc
+Version  : 0.5.1
+Release  : 37
+URL      : https://files.pythonhosted.org/packages/b7/9c/45b706be126aebf3491b07450f3ba419039b6d0b5a9cc0991b5598eedddd/gast-0.5.1.tar.gz
+Source0  : https://files.pythonhosted.org/packages/b7/9c/45b706be126aebf3491b07450f3ba419039b6d0b5a9cc0991b5598eedddd/gast-0.5.1.tar.gz
+Source1  : https://files.pythonhosted.org/packages/b7/9c/45b706be126aebf3491b07450f3ba419039b6d0b5a9cc0991b5598eedddd/gast-0.5.1.tar.gz.asc
 Summary  : Python AST that abstracts the underlying Python version
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -54,23 +54,23 @@ python3 components for the gast package.
 
 
 %prep
-%setup -q -n gast-0.5.0
-cd %{_builddir}/gast-0.5.0
+%setup -q -n gast-0.5.1
+cd %{_builddir}/gast-0.5.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1624921570
+export SOURCE_DATE_EPOCH=1627310759
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
@@ -83,7 +83,7 @@ PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python set
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gast
-cp %{_builddir}/gast-0.5.0/LICENSE %{buildroot}/usr/share/package-licenses/gast/a7b1672edaab167e0083c4c26c737daa5755efd8
+cp %{_builddir}/gast-0.5.1/LICENSE %{buildroot}/usr/share/package-licenses/gast/a7b1672edaab167e0083c4c26c737daa5755efd8
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
